@@ -6807,7 +6807,7 @@ if ("development" !== "production") {
       }
 
       var eventName = 'on' + eventNameSuffix;
-      var isSupported = eventName in document;
+      var isSupported = (eventName in document);
 
       if (!isSupported) {
         var element = document.createElement('div');
@@ -28285,17 +28285,116 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"script.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"component/Form.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Form(props) {
+  var classes = props.inputs ? "input input--".concat(props.inputs) : 'input';
+  ;
+
+  if (props.value) {
+    classes = "".concat(classes, " input--text");
+  }
+
+  if (props.size) {
+    classes = "".concat(classes, " input--").concat(props.size);
+  }
+
+  if (props.row) {
+    classes = "".concat(classes, " input--").concat(props.row);
+  }
+
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "labelLayout"
+  }, /*#__PURE__*/_react.default.createElement("label", null, /*#__PURE__*/_react.default.createElement("span", {
+    className: props.color
+  }, "Label"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    placeholder: "Placeholder",
+    className: classes
+  })));
+}
+
+var _default = Form;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"component/App.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Form = _interopRequireDefault(require("./Form"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function App() {
+  var input1 = '<Input />';
+  var input2 = '<Input error />';
+  var input3 = '<Input disabled />';
+  var input4 = '<Input helperText= "Some interesting text" />';
+  var input5 = '<Input helperText= "Some interesting text" error />';
+  var input6 = '<Input startIcon />';
+  var input7 = '<Input endIcon />';
+  var input8 = '<Input value= "text" />';
+  var input9 = '<Input size= "sm" />';
+  var input10 = '<Input size= "md" />';
+  var input11 = '<Input fullWidth />';
+  var input12 = '<Input multiline row= "4" />';
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Form Inputs"), /*#__PURE__*/_react.default.createElement("form", null, input1, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    inputs: "1"
+  }), input2, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    inputs: "error"
+  }), input3, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    inputs: "disabled"
+  }), input4, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    inputs: "someInterestingText"
+  }), input5, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    inputs: "someInterestingTextError"
+  }), input6, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    inputs: "startIcon"
+  }), input7, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    inputs: "endIcon"
+  }), input8, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    value: "text"
+  }), input9, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    size: "sm"
+  }), input10, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    size: "md"
+  }), input11, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    inputs: "fullWidth"
+  }), input12, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    row: "row"
+  })));
+}
+
+var _default = App;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","./Form":"component/Form.js"}],"script.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
+var _App = _interopRequireDefault(require("./component/App"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom.default.render(_react.default.createElement("h1", null, "Hello Onja"), document.getElementById('root'));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+_reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default, null), document.getElementById('root'));
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./component/App":"component/App.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -28323,7 +28422,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65015" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62099" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -28499,5 +28598,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","script.js"], null)
+},{}]},{},["../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","script.js"], null)
 //# sourceMappingURL=/script.75da7f30.js.map
