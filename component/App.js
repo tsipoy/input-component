@@ -1,58 +1,130 @@
 import React from "react";
 import Form from "./Form";
+import Textarea from "./Textarea";
 
 function App() {
-    const input1 = '<Input />';
-    const input2 = '<Input error />';
-    const input3 = '<Input disabled />';
-    const input4 = '<Input helperText= "Some interesting text" />';
-    const input5 = '<Input helperText= "Some interesting text" error />';
-    const input6 = '<Input startIcon />';
-    const input7 = '<Input endIcon />';
-    const input8 = '<Input value= "text" />';
-    const input9 = '<Input size= "sm" />';
-    const input10 = '<Input size= "md" />';
-    const input11 = '<Input fullWidth />';
-    const input12 = '<Input multiline row= "4" />';
+    const inputDefault = '<Input />'
+    const input1 = '<Input error />';
+    const input2 = '<Input disabled />';
+    const input3 = '<Input helperText= "Some interesting text" />';
+    const input4 = '<Input helperText= "Some interesting text" error />';
+    const input5 = '<Input startIcon />';
+    const input6 = '<Input endIcon />';
+    const input7 = '<Input value= "text" />';
+    const input8 = '<Input size= "sm" />';
+    const input9 = '<Input size= "md" />';
+    const input10 = '<Input fullWidth />';
+    const input11 = '<Input multiline row= "4" />';
+
     return (
         <div>
             <h1>Form Inputs</h1>
             <form>
-                { input1 }
-                <Form inputs="1" />
-
-                { input2 }
-                <Form inputs="error" />
-
-                {input3 }
-                <Form inputs="disabled" />
-
-                { input4 }
-                <Form inputs="someInterestingText" />
-
-                { input5 }
-                <Form inputs="someInterestingTextError" />
+                <div>
+                    { inputDefault }
+                    <Form 
+                        inputs="1" 
+                        type="text" 
+                        placeholder="Placeholder" 
+                    />
+                </div>
                 
-                {input6 }
-                <Form inputs="startIcon" />
+                <div className="gridColomn">
+                    { input1 }
+                    <Form 
+                        inputs="error" 
+                        type="text" 
+                        placeholder="Placeholder" 
+                        color="error-color" 
+                    />
+                </div>
 
-                { input7 }
-                <Form inputs="endIcon" />
+                <div className="gridColomn">
+                    {input2 }
+                    <Form 
+                        inputs="disabled" 
+                        type="text" 
+                        placeholder="Placeholder" 
+                    />
+                </div>
 
-                { input8 }
-                <Form value="text" />
-                
-                {input9 }
-                <Form size="sm" />
+                <div className="gridColomn">
+                    { input3 }
+                    <Form 
+                        inputs="someInterestingText" 
+                        type="text"
+                        placeholder="Placeholder"
+                        text="Some interesting text"
+                    />
+                </div>
 
-                { input10 }
-                <Form size="md" />
+                <div>
+                    { input4 }
+                    <Form 
+                        inputs="someInterestingTextError" 
+                        type="text" 
+                        placeholder="Placeholder" 
+                        color="error-color" 
+                        text="Some interesting text"/>
+                </div>
 
-                { input11 }
-                <Form inputs="fullWidth" />
-                
-                {input12 }
-                <Form row="row" />
+                <div>                
+                    {input5 }
+                    <Form 
+                        inputs="startIcon" 
+                        type="text" 
+                        placeholder="Placeholder" 
+                    />
+                </div>
+
+                <div>
+                    { input6 }
+                    <Form 
+                        inputs="endIcon" 
+                        type="text" 
+                        placeholder="Placeholder" />
+                </div>
+
+                <div>
+                    { input7 }
+                    <Form 
+                        value="text" 
+                        type="text" 
+                        placeholder="Text" 
+                    />
+                </div>
+
+                <div className="gridColomn">                
+                    {input8 }
+                    <Form 
+                        size="sm" 
+                        type="text" 
+                        placeholder="Placeholder" 
+                    />
+                </div>
+
+                <div>
+                    { input9 }
+                    <Form 
+                        size="md" 
+                        type="text" 
+                        placeholder="Placeholder"
+                    />
+                </div>
+
+                <div className="fulwidth">
+                    { input10 }
+                    <Form 
+                        inputs="fullWidth" 
+                        type="text" 
+                        placeholder="Text" 
+                    />
+                </div>
+
+                <div className="textareaClass gridColomn">                
+                    { input11 }
+                    <Textarea />
+                </div>
             </form>
         </div>
 

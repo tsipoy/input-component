@@ -28285,7 +28285,35 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"component/Form.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"component/Icons.js":[function(require,module,exports) {
+// import IconCall from "./icons/call.svg";
+// import IconPhone from "./icons/phone.svg";
+// import IconHttps from "./icons/https.svg";
+// import Iconlock from "./icons/lock.svg";
+// const Icons = props => {
+//     let icon;
+//     const style = props.align === 'right' ? 'icon--right' : null;
+//     switch (props.name) {
+//         case 'call':
+//             icon = <img src={IconCall} className={style} />;
+//             break;
+//         case 'phone':
+//             icon = <img src={IconPhone} className={style} />;
+//             break;
+//         case 'https':
+//             icon = <img src={IconHttps} className={style} />;
+//             break;
+//         case 'lock':
+//             icon = <img src={Iconlock} className={style} />;
+//             break;
+//         default:
+//             icon = <span />;
+//             break;
+//     }
+//     return icon;
+// };
+// export default Icons
+},{}],"component/Form.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28295,11 +28323,12 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _Icons = _interopRequireDefault(require("./Icons"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Form(props) {
   var classes = props.inputs ? "input input--".concat(props.inputs) : 'input';
-  ;
 
   if (props.value) {
     classes = "".concat(classes, " input--text");
@@ -28313,18 +28342,45 @@ function Form(props) {
     classes = "".concat(classes, " input--").concat(props.row);
   }
 
+  var fontSize = {
+    fontSize: "14px"
+  };
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "labelLayout"
   }, /*#__PURE__*/_react.default.createElement("label", null, /*#__PURE__*/_react.default.createElement("span", {
     className: props.color
   }, "Label"), /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    placeholder: "Placeholder",
+    type: props.type,
+    placeholder: props.placeholder,
     className: classes
-  })));
+  }), /*#__PURE__*/_react.default.createElement("span", {
+    className: props.color,
+    style: fontSize
+  }, props.text)));
 }
 
 var _default = Form;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","./Icons":"component/Icons.js"}],"component/Textarea.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Textarea() {
+  return /*#__PURE__*/_react.default.createElement("textarea", {
+    className: "input--row",
+    placeholder: "Placeholder"
+  });
+}
+
+var _default = Textarea;
 exports.default = _default;
 },{"react":"node_modules/react/index.js"}],"component/App.js":[function(require,module,exports) {
 "use strict";
@@ -28338,51 +28394,89 @@ var _react = _interopRequireDefault(require("react"));
 
 var _Form = _interopRequireDefault(require("./Form"));
 
+var _Textarea = _interopRequireDefault(require("./Textarea"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
-  var input1 = '<Input />';
-  var input2 = '<Input error />';
-  var input3 = '<Input disabled />';
-  var input4 = '<Input helperText= "Some interesting text" />';
-  var input5 = '<Input helperText= "Some interesting text" error />';
-  var input6 = '<Input startIcon />';
-  var input7 = '<Input endIcon />';
-  var input8 = '<Input value= "text" />';
-  var input9 = '<Input size= "sm" />';
-  var input10 = '<Input size= "md" />';
-  var input11 = '<Input fullWidth />';
-  var input12 = '<Input multiline row= "4" />';
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Form Inputs"), /*#__PURE__*/_react.default.createElement("form", null, input1, /*#__PURE__*/_react.default.createElement(_Form.default, {
-    inputs: "1"
-  }), input2, /*#__PURE__*/_react.default.createElement(_Form.default, {
-    inputs: "error"
-  }), input3, /*#__PURE__*/_react.default.createElement(_Form.default, {
-    inputs: "disabled"
-  }), input4, /*#__PURE__*/_react.default.createElement(_Form.default, {
-    inputs: "someInterestingText"
-  }), input5, /*#__PURE__*/_react.default.createElement(_Form.default, {
-    inputs: "someInterestingTextError"
-  }), input6, /*#__PURE__*/_react.default.createElement(_Form.default, {
-    inputs: "startIcon"
-  }), input7, /*#__PURE__*/_react.default.createElement(_Form.default, {
-    inputs: "endIcon"
-  }), input8, /*#__PURE__*/_react.default.createElement(_Form.default, {
-    value: "text"
-  }), input9, /*#__PURE__*/_react.default.createElement(_Form.default, {
-    size: "sm"
-  }), input10, /*#__PURE__*/_react.default.createElement(_Form.default, {
-    size: "md"
-  }), input11, /*#__PURE__*/_react.default.createElement(_Form.default, {
-    inputs: "fullWidth"
-  }), input12, /*#__PURE__*/_react.default.createElement(_Form.default, {
-    row: "row"
-  })));
+  var inputDefault = '<Input />';
+  var input1 = '<Input error />';
+  var input2 = '<Input disabled />';
+  var input3 = '<Input helperText= "Some interesting text" />';
+  var input4 = '<Input helperText= "Some interesting text" error />';
+  var input5 = '<Input startIcon />';
+  var input6 = '<Input endIcon />';
+  var input7 = '<Input value= "text" />';
+  var input8 = '<Input size= "sm" />';
+  var input9 = '<Input size= "md" />';
+  var input10 = '<Input fullWidth />';
+  var input11 = '<Input multiline row= "4" />';
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Form Inputs"), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("div", null, inputDefault, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    inputs: "1",
+    type: "text",
+    placeholder: "Placeholder"
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    className: "gridColomn"
+  }, input1, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    inputs: "error",
+    type: "text",
+    placeholder: "Placeholder",
+    color: "error-color"
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    className: "gridColomn"
+  }, input2, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    inputs: "disabled",
+    type: "text",
+    placeholder: "Placeholder"
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    className: "gridColomn"
+  }, input3, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    inputs: "someInterestingText",
+    type: "text",
+    placeholder: "Placeholder",
+    text: "Some interesting text"
+  })), /*#__PURE__*/_react.default.createElement("div", null, input4, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    inputs: "someInterestingTextError",
+    type: "text",
+    placeholder: "Placeholder",
+    color: "error-color",
+    text: "Some interesting text"
+  })), /*#__PURE__*/_react.default.createElement("div", null, input5, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    inputs: "startIcon",
+    type: "text",
+    placeholder: "Placeholder"
+  })), /*#__PURE__*/_react.default.createElement("div", null, input6, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    inputs: "endIcon",
+    type: "text",
+    placeholder: "Placeholder"
+  })), /*#__PURE__*/_react.default.createElement("div", null, input7, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    value: "text",
+    type: "text",
+    placeholder: "Text"
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    className: "gridColomn"
+  }, input8, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    size: "sm",
+    type: "text",
+    placeholder: "Placeholder"
+  })), /*#__PURE__*/_react.default.createElement("div", null, input9, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    size: "md",
+    type: "text",
+    placeholder: "Placeholder"
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    className: "fulwidth"
+  }, input10, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    inputs: "fullWidth",
+    type: "text",
+    placeholder: "Text"
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    className: "textareaClass gridColomn"
+  }, input11, /*#__PURE__*/_react.default.createElement(_Textarea.default, null))));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./Form":"component/Form.js"}],"script.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Form":"component/Form.js","./Textarea":"component/Textarea.js"}],"script.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -28422,7 +28516,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62099" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49910" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

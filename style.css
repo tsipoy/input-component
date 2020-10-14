@@ -1,10 +1,22 @@
+body {
+    margin: 0;
+    background-color: aliceblue;
+}
 #root {
     font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 8px;
 }
 
 form {
     display: flex;
     flex-direction: column;
+}
+
+span {
+    line-height: 1.7;
 }
 
 label {
@@ -25,7 +37,8 @@ label {
     box-sizing: border-box;
     border-radius: 8px;
     max-width: max-content;
-    cursor: text;
+   pointer-events: visible;
+   outline: none;
 }
 
 .input--1 {
@@ -48,7 +61,7 @@ label {
 
 .input--error {
     border: 1px solid #D32F2F;
-    cursor: text;
+    pointer-events: none;
 }
 
 .input--error:hover {
@@ -62,7 +75,7 @@ label {
 .input--disabled {
     background-color: #F2F2F2;
     border: 1px solid #E0E0E0;
-    cursor: default;
+    pointer-events: none;
 }
 
 .input--someInterestingText {
@@ -71,14 +84,21 @@ label {
 
 .input--someInterestingTextError {
     border: 1px solid #D32F2F;
+    pointer-events: none;
 }
 
 .input--startIcon {
-    border: 1px solid #828282;
+    background-image: url('./icons/phone.svg');
+    background-repeat: no-repeat;
+    background-position: 10%;
+    text-align: center;
+
 }
 
 .input--endIcon {
-    border: 1px solid #828282;
+   background-image: url('./icons/lock.svg');
+   background-repeat: no-repeat;
+   background-position: 90%;
 }
 
 .input--text {
@@ -98,17 +118,42 @@ label {
     max-width: 100%;   
 }
 
+
+.textareaClass {
+    display: flex;
+    flex-direction: column;
+}
+
 .input--row {
     padding-block-end: 112px;
     padding-block-start: 18px;
     padding-inline-start: 12px;
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 8px;
+    max-width: max-content;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    margin-block-start: 1rem;
 }
 
 .error-color {
-    border: 1px solid #D32F2F;
+    color: #D32F2F;
 }
 
-.default-color {
-    border: 1px solid #828282;
+.gridColomn {
+    grid-column: 1;
 }
 
+.fulwidth {
+    grid-column: 1 / 3;
+}
+
+@media(min-width: 500px) {
+    form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 42px;
+    }
+}
