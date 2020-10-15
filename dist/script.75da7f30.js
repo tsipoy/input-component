@@ -28412,7 +28412,7 @@ function App() {
   var input10 = '<Input fullWidth />';
   var input11 = '<Input multiline row= "4" />';
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Form Inputs"), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("div", null, inputDefault, /*#__PURE__*/_react.default.createElement(_Form.default, {
-    inputs: "1",
+    inputs: "default",
     type: "text",
     placeholder: "Placeholder"
   })), /*#__PURE__*/_react.default.createElement("div", {
@@ -28516,7 +28516,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49910" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60734" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

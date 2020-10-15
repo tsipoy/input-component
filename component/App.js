@@ -23,7 +23,7 @@ function App() {
                 <div>
                     { inputDefault }
                     <Form 
-                        inputs="1" 
+                        inputs="default" 
                         type="text" 
                         placeholder="Placeholder" 
                     />
